@@ -21,6 +21,12 @@ platforms:
       box: chef/windows-server-2012r2-standard
 
 suites:
-  - name: default
+  - name: rewrite-2.0
+    run_list:
+      - recipe[iis_urlrewrite::default]
+  - name: rewrite-2.1
+    attributes:
+      iis_urlrewrite:
+        version: "2.1"
     run_list:
       - recipe[iis_urlrewrite::default]

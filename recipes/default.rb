@@ -23,5 +23,6 @@ package 'IIS URL Rewrite Module 2' do
   source node['iis_urlrewrite']['url']
   checksum node['iis_urlrewrite']['checksum']
   action :install
+  returns [0, 1603]
   notifies :restart, 'service[iis]'
 end

@@ -24,5 +24,7 @@ package 'IIS URL Rewrite Module 2' do
   checksum node['iis_urlrewrite']['checksum']
   action :install
   returns [0, 1603]
+  guard_interpreter :powershell_script
+  not_if 'Get-WmiObject -Class Win32_Product | Where-Object { $_.Name -eq "IIS URL Rewrite Module 2"}'
   notifies :restart, 'service[iis]'
 end
